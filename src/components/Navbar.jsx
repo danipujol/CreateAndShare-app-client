@@ -26,7 +26,8 @@ function Navbar() {
         // todo ejemplo de si estamos loggeados o no que podemos ver
       }
 
-      {isLoggedIn && <Link to="/artistas/:artistaId/detalles">Perfil</Link>}
+      {/* {isLoggedIn && <Link to="/artistas/:artistaId/detalles">Perfil</Link>} */}
+      <Link to="/artistas/:artistaId/detalles">Perfil</Link> //! recordar ID
       
 
       <Link to="/">Home</Link>

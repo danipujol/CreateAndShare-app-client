@@ -13,6 +13,7 @@ import IsPrivate from './components/auth/IsPrivate';
 import ArtistProfile from './pages/ArtistProfile';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -24,8 +25,9 @@ function App() {
 <Route path="/" element={<Home />} />
 <Route path= "/artistas" element={<ArtistsList />} />
 <Route path= "/obras" element={<ArtWorkList/>}/>
-<Route path="/artistas/:artistaId/detalles" element={<IsPrivate><ArtistProfile/></IsPrivate>}/>
+{/* <Route path="/perfil" element={<IsPrivate><ArtistProfile/></IsPrivate>}/>  */}
 
+<Route path="/artista/:artistaId/" element={<ArtistProfile/>}/>
 
 {/* auth routes */}
 
