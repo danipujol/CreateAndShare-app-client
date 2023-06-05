@@ -11,6 +11,8 @@ import ArtistsList from './pages/ArtistsList';
 import ArtWorkList from './pages/ArtWorksList';
 import IsPrivate from './components/auth/IsPrivate';
 import ArtistProfile from './pages/ArtistProfile';
+import ArtWorkDetails from './pages/ArtWorkDetails';
+import ArtWorkCreate from './pages/ArtWorkCreate';
 
 
 
@@ -25,6 +27,8 @@ function App() {
 <Route path="/" element={<Home />} />
 <Route path= "/artistas" element={<ArtistsList />} />
 <Route path= "/obras" element={<ArtWorkList/>}/>
+<Route path= "/obra/crear" element= {<ArtWorkCreate/>}/>
+<Route path="/obra/:id/detalles" element={<ArtWorkDetails/>}/>
 {/* <Route path="/perfil" element={<IsPrivate><ArtistProfile/></IsPrivate>}/>  */}
 
 <Route path="/artista/:artistaId/" element={<ArtistProfile/>}/>
