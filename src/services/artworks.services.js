@@ -20,9 +20,14 @@ const getOneArtwork = (id) => {
     return service.get(`/${id}/detalles`)
       }
 
+const createArtwork = (artwork) => {
+  return service.post("/crear", artwork)
+}
+
   export {
     getAllArtworks,
-    getOneArtwork
+    getOneArtwork,
+    createArtwork
   }
 
 

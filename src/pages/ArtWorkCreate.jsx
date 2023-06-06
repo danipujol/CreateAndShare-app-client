@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom"
-
+import { useNavigate } from "react-router-dom";
+import uploadArtwork from "../services/uploader.services.js";
+import { createArtwork } from "../services/artworks.services.js";
 
 function ArtWorkCreate() {
   //1.useState para cada propiedad
@@ -8,79 +9,133 @@ function ArtWorkCreate() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [ typeOfArt, setTypeOfArt] = useState("");
-  const [ yearOfCreation, setYearOfCreation] = useState("");
-  
+  const [typeOfArt, setTypeOfArt] = useState("");
+  const [yearOfCreation, setYearOfCreation] = useState("");
+
+  const [imageUploaded, setimageUploaded] = useState(null);
+
   const navigate = useNavigate();
 
   //2.crear la funcion para crear
 
+  const handleUpload = (e) => {
+    //funcion para subir imagenes al cloudinary
+
+    const uploadImage = new FormData();
+    uploadImage.append("image", e.target.files[0]); // comprobar que sea el nombre de la carpeta de cloudinary ArtWorks
+    setimageUploaded(false);
+    uploadArtwork(uploadImage)
+      .then((response) => {
+        setimageUploaded(true);
+        setImage(response.data.imageUrl);
+      })
+      .catch((error) => {
+        console.log("Error al subir la imagen ", error);
+      });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const artwork = {
+          title,
+          description,
+          image,
+          typeOfArt,
+          yearOfCreation,
+        };
 
+    try {
+      //aqui la funcion para enviar los datos al backend
+      await createArtwork(artwork)
+       //poner un navigate
 
-    try{
- //aqui la funcion para enviar los datos al backend
-
-
-
-
-    }catch(error){
-    navigate("/error")
+    } catch (error) {
+      navigate("/error");
     }
 
     console.log(title, description, image, typeOfArt, yearOfCreation);
   };
 
-
-
-  //3.navigate
-  
-
-
-
-
-
   return (
-    
-<form onSubmit={handleSubmit}> 
     <div>
+      {!imageUploaded ? (
+        <img src={image} alt="Artwork" />
+      ) : (
+        <div>...Loading</div>
+      )}
 
-<input onChange={(e)=> setTitle(e.target.value)} value={title} class="form-control" type="text" placeholder="Título" aria-label="default input example"/>
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          class="form-control"
+          type="text"
+          placeholder="Título"
+          aria-label="default input example"
+        />
 
- <div class="mb-3">
-  <label for="formFile" class="form-label">Imagen</label>
-  <input class="form-control" type="file" id="formFile"/>
-</div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">
+            Imagen
+          </label>
+          <input
+            onChange={(e) => handleUpload(e)}
+            class="form-control"
+            type="file"
+            name="image"
+            accept="image/*"
+            id="formFile"
+          />
+        </div>
 
-<input onChange={(e)=> setDescription(e.target.value)} value={description} class="form-control" type="text" placeholder="Descripción" aria-label="default input example"/>
+        <input
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          class="form-control"
+          type="text"
+          placeholder="Descripción"
+          aria-label="default input example"
+        />
 
-<input onChange={(e) => setYearOfCreation(e.target.value)} value={yearOfCreation} class="form-control"  type="number" min="1800" max="2099" step="1"  placeholder="Año de creación" aria-label="default input example"/> 
+        <input
+          onChange={(e) => setYearOfCreation(e.target.value)}
+          value={yearOfCreation}
+          class="form-control"
+          type="number"
+          min="1800"
+          max="2099"
+          step="1"
+          placeholder="Año de creación"
+          aria-label="default input example"
+        />
 
-<select onChange={(e) => setTypeOfArt(e.target.value)} value={typeOfArt} class="form-select" aria-label="Default select example">
-  <option selected>Selecciona categoría</option>
-  <option value="pintura">Pintura</option>
-  <option value="grafitis">Grafiti</option>
-  <option value="murales">Mural</option>
-  <option value="escultura">Escultura</option>
-  <option value="dibujo">Dibujo</option>
-  <option value="grabado">Grabado</option>
-  <option value="arteDelVidrio">Arte del vidrio</option>
-  <option value="orfebrería">Orfebrería</option>
-  <option value="ebanistería">Ebanistería</option>
-  <option value="cerámica">Cerámica</option>
-  <option value="fotografía">Fotografía</option>
-  <option value="otros">Otros</option>
-</select>
-<br />
+        <select
+          onChange={(e) => setTypeOfArt(e.target.value)}
+          value={typeOfArt}
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option selected>Selecciona categoría</option>
+          <option value="pintura">Pintura</option>
+          <option value="grafitis">Grafiti</option>
+          <option value="murales">Mural</option>
+          <option value="escultura">Escultura</option>
+          <option value="dibujo">Dibujo</option>
+          <option value="grabado">Grabado</option>
+          <option value="arteDelVidrio">Arte del vidrio</option>
+          <option value="orfebrería">Orfebrería</option>
+          <option value="ebanistería">Ebanistería</option>
+          <option value="cerámica">Cerámica</option>
+          <option value="fotografía">Fotografía</option>
+          <option value="otros">Otros</option>
+        </select>
+        <br />
 
-<button type="submit">Crear</button>
-
+        <button type="submit">Crear</button>
+      </form>
     </div>
-
-</form>
-  )
+  );
 }
 
-export default ArtWorkCreate
+export default ArtWorkCreate;
