@@ -25,7 +25,7 @@ body {
 }
 
 .home {
-  background-image: url("../public/backgroundblanco2.avif");
+  background-image: url("../public/fondo.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

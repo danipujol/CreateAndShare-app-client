@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-function ArtworkContainer(props) {
+function ArtWorkEditContainer(props) {
   const { artwork } = props;
 
   // console.log(artwork._id);
@@ -10,8 +10,8 @@ function ArtworkContainer(props) {
       <img src={artwork.image} class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{artwork.title}</h5>
-        <Link to={`/obra/${artwork._id}/detalles`} class="btn btn-primary">
-          Detalles de la obra
+        <Link to={`/obra/${artwork._id}/editar`} class="btn btn-primary">
+          Editar
         </Link>
       </div>
       
@@ -19,4 +19,4 @@ function ArtworkContainer(props) {
   );
 }
 
-export default ArtworkContainer;
+export default ArtWorkEditContainer;

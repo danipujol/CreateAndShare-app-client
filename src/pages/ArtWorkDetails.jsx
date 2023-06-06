@@ -16,7 +16,7 @@ function ArtWorkDetails() {
     try {
       const response = await getOneArtwork(id);
       setdetails(response.data);
-     console.log(response.data);
+      //  console.log(response.data);
     } catch (error) {
       navigate("/error");
     }
@@ -28,20 +28,20 @@ function ArtWorkDetails() {
 
   return (
     <div>
-       <div>
+      <div>
         <h1>{details.title}</h1>
-         <img src={details.image} alt="" />
+        <img src={details.image} alt="" />
       </div>
-       <div>
-        <h2>Creado por: {details.creator.username}</h2> 
+      <div>
+        <h2>Creado por: {details.creator.username}</h2>
         <p>Descripción:{details.description}</p>
-       <p>Año de creacion:{details.yearOfCreation}</p>
+        <p>Año de creacion:{details.yearOfCreation}</p>
         <p>tipo de arte: {details.typeOfArt}</p>
-      </div> 
+      </div>
 
       <div>
-        <p>comentarios</p> 
-      </div> 
+        <p>comentarios</p>
+      </div>
     </div>
   );
 }

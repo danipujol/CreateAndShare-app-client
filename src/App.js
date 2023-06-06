@@ -13,6 +13,8 @@ import IsPrivate from './components/auth/IsPrivate';
 import ArtistProfile from './pages/ArtistProfile';
 import ArtWorkDetails from './pages/ArtWorkDetails';
 import ArtWorkCreate from './pages/ArtWorkCreate';
+import MyProfile from './pages/MyProfile';
+import ArtWorkEdit from './pages/ArtWorkEdit';
 
 
 
@@ -29,9 +31,13 @@ function App() {
 <Route path= "/obras" element={<ArtWorkList/>}/>
 <Route path= "/obra/crear" element= {<ArtWorkCreate/>}/>
 <Route path="/obra/:id/detalles" element={<ArtWorkDetails/>}/>
+<Route path="/obra/:id/editar" element={<ArtWorkEdit/>}/>
 {/* <Route path="/perfil" element={<IsPrivate><ArtistProfile/></IsPrivate>}/>  */}
 
-<Route path="/artista/:artistaId/" element={<ArtistProfile/>}/>
+<Route path="/artistas/mi-perfil" element={<MyProfile/>}/>
+
+
+<Route path="/artistas/:artistaId/detalles" element={<ArtistProfile/>}/>
 
 {/* auth routes */}
 

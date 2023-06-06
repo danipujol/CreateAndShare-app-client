@@ -24,10 +24,15 @@ const createArtwork = (artwork) => {
   return service.post("/crear", artwork)
 }
 
+const editarArtwork = (artwork) => {
+return service.put(`/${artwork.id}/editar`, artwork)
+}
+
   export {
     getAllArtworks,
     getOneArtwork,
-    createArtwork
+    createArtwork,
+    editarArtwork
   }
 
 

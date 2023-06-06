@@ -37,11 +37,13 @@ function AuthWrapper(props) {
   }
 
   // 2. el objecto de contexto que pasaremos
+
   const passedContext = {
     isLoggedIn,
     user,
     authenticateUser
   }
+
 
   if (isLoading) {
     return (

@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getOneArtist } from "../services/artists.services";
-import ArtworkContainer from "../components/ArtworkContainer";
+import { getMyProfile } from "../services/artists.services";
+import ArtWorkEditContainer from "../components/ArtWorkEditContainer";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
-function ArtistProfile() {
+
+function MyProfile() {
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
 
-  const { artistaId } = useParams();
+  const { isLoggedIn, authenticateUser } = useContext(AuthContext);
 
   useEffect(() => {
     getArtist();
@@ -15,10 +18,10 @@ function ArtistProfile() {
 
   const getArtist = async () => {
     try {
-      const response = await getOneArtist(artistaId);
+      const response = await getMyProfile();
 
       setProfile(response.data);
-      console.log(response.data);
+    //   console.log(isLoggedIn, authenticateUser);
     } catch (error) {
       navigate("/error");
     }
@@ -51,7 +54,7 @@ function ArtistProfile() {
         <h1>Aqui las obras de arte, usando Artwork container</h1>
         {profile.artWorks.map((eachArtWork) => {
           return (
-            <ArtworkContainer key={eachArtWork._id} artwork={eachArtWork} />
+            <ArtWorkEditContainer key={eachArtWork._id} artwork={eachArtWork} />
           );
         })}
 
@@ -60,4 +63,4 @@ function ArtistProfile() {
   );
 }
 
-export default ArtistProfile;
+export default MyProfile;

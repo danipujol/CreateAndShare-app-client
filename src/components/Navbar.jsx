@@ -32,7 +32,7 @@ function Navbar() {
 
             <li class="nav-item">
               <Link class="nav-link" to="/obras">
-                Todas las obras de arte
+                Obras de arte más recientes
               </Link>
             </li>
 
@@ -44,9 +44,9 @@ function Navbar() {
 
             {isLoggedIn && (
               <li class="nav-item">
-                <Link class="nav-link" to="/profile">
-                  Profile
-                </Link>{" "}
+                <Link class="nav-link" to="/artistas/mi-perfil">
+                  Perfil
+                </Link>
               </li>
             )}
 

@@ -49,6 +49,7 @@ function ArtWorkCreate() {
       //aqui la funcion para enviar los datos al backend
       await createArtwork(artwork)
        //poner un navigate
+       navigate("/artistas/mi-perfil")
 
     } catch (error) {
       navigate("/error");

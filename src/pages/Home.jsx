@@ -2,7 +2,7 @@ function Home() {
   return (
     <body class="home">
     <div >
-      <img src="C&S.png" alt="C&S" className="logo" />
+      <img src="logo2.png" alt="C&S" className="logo" />
     
       <h2> ¡Bienvenido a nuestra plataforma artística en línea! </h2>
 
