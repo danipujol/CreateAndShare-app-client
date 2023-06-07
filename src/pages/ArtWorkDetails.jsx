@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getOneArtwork } from "../services/artworks.services";
+import CommentsContainer from "../components/CommentsContainer";
 
 function ArtWorkDetails() {
   const [details, setdetails] = useState(null);
@@ -27,20 +28,23 @@ function ArtWorkDetails() {
   }
 
   return (
+    <div className="text-center">
     <div>
-      <div>
-        <h1>{details.title}</h1>
-        <img src={details.image} alt="" />
+      <h1>{details.title}</h1>
+      <img src={details.image} alt="" />
+    </div>
+    <div>
+      <h2>Creado por: {details.creator.username}</h2>
+      <p>Descripción: {details.description}</p>
+      <p>Año de creación: {details.yearOfCreation}</p>
+      <p>Tipo de arte: {details.typeOfArt}</p>
+    </div>
+    <div>
+        <h2>Comentarios</h2>
+        {/* Renderizar los comentarios existentes aquí */}
       </div>
       <div>
-        <h2>Creado por: {details.creator.username}</h2>
-        <p>Descripción:{details.description}</p>
-        <p>Año de creacion:{details.yearOfCreation}</p>
-        <p>tipo de arte: {details.typeOfArt}</p>
-      </div>
-
-      <div>
-        <p>comentarios</p>
+        <CommentsContainer artworkId={id} />
       </div>
     </div>
   );

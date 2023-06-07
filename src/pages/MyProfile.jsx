@@ -5,7 +5,6 @@ import ArtWorkEditContainer from "../components/ArtWorkEditContainer";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 
-
 function MyProfile() {
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ function MyProfile() {
       const response = await getMyProfile();
 
       setProfile(response.data);
-    //   console.log(isLoggedIn, authenticateUser);
+      //   console.log(isLoggedIn, authenticateUser);
     } catch (error) {
       navigate("/error");
     }
@@ -32,32 +31,38 @@ function MyProfile() {
   }
 
   return (
-    <div>
-      <h1>
-        {profile.response.name} {profile.response.firstName}
-      </h1>
-      <h3>Nombre artístico: {profile.response.username}</h3>
-      <h4>!QUIZÁS AÑADIR UN: SOBRE MI(DESCRIPCION)</h4>
-      <h5>Ciudad actual: {profile.response.actualCity}</h5>
-      <h5>
-        Fecha de nacimiento: {profile.response.dateOfBirth}(
-        {/* <p>  const dateOfBirth = user.dateOfBirth.toLocaleDateString("en-US", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      });</p> */}
-        )
-      </h5>
-      <h6>Contacto: {profile.response.email}</h6>
-
+    <div  className="text-center">
       <div>
-        <h1>Aqui las obras de arte, usando Artwork container</h1>
+        <h1>
+          {profile.response.name} {profile.response.firstName}
+        </h1>
+        <h3>Nombre artístico: {profile.response.username}</h3>
+        <h4>¡QUIZÁS AÑADIR UN: SOBRE MI (DESCRIPCIÓN)!</h4>
+        <h5>Ciudad actual: {profile.response.actualCity}</h5>
+        <h5>
+          Fecha de nacimiento: {profile.response.dateOfBirth}(
+          {/* <p>  const dateOfBirth = user.dateOfBirth.toLocaleDateString("en-US", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });</p> */}
+          )
+        </h5>
+        <h6>Contacto: {profile.response.email}</h6>
+        <h1>Obras compartidas</h1>
+      </div>
+
+      <div className="d-flex flex-wrap justify-content-center">
         {profile.artWorks.map((eachArtWork) => {
           return (
-            <ArtWorkEditContainer key={eachArtWork._id} artwork={eachArtWork} />
+            <div className="col-3 mb-3 mx-3">
+              <ArtWorkEditContainer
+                key={eachArtWork._id}
+                artwork={eachArtWork}
+              />
+            </div>
           );
         })}
-
       </div>
     </div>
   );

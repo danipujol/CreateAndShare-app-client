@@ -61,7 +61,8 @@ function ArtWorkEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const artwork = {
+    const updatedArtwork = {
+      id: artwork._id,
       title,
       description,
       image,
@@ -71,7 +72,8 @@ function ArtWorkEdit() {
 
     try {
       //aqui la funcion para enviar los datos al backend
-      await editarArtwork(artwork);
+      await editarArtwork(updatedArtwork);
+      navigate("/artistas/mi-perfil");
       //poner un navigate
     } catch (error) {
       navigate("/error");

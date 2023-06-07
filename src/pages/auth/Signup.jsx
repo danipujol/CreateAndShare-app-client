@@ -52,10 +52,10 @@ function Signup() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Registrarse</h1>
 
       <form onSubmit={handleSignup}>
-        <label>Username:</label>
+        <label>Nombre artístico:</label>
         <input
           type="text"
           name="username"

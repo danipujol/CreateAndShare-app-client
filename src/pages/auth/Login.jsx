@@ -49,10 +49,10 @@ function Login() {
   return (
     <div>
 
-      <h1>Log In</h1>
+      <h1>Bienvenido de nuevo</h1>
 
       <form onSubmit={handleLogin}>
-        <label>Usuario:</label>
+        <label>Nombre artístico:</label>
         <input
           type="text"
           name="username"
@@ -62,7 +62,7 @@ function Login() {
 
         <br />
 
-        <label>Password:</label>
+        <label>Contraseña:</label>
         <input
           type="password"
           name="password"
@@ -74,7 +74,7 @@ function Login() {
 
         {errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
 
-        <button type="submit">Login</button>
+        <button type="submit">Entrar</button>
       </form>
       
     </div>

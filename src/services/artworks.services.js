@@ -28,11 +28,16 @@ const editarArtwork = (artwork) => {
 return service.put(`/${artwork.id}/editar`, artwork)
 }
 
+const eliminarArtwork = (artworkId) => {
+  return service.delete(`/${artworkId}/eliminar`);
+};
+
   export {
     getAllArtworks,
     getOneArtwork,
     createArtwork,
-    editarArtwork
+    editarArtwork,
+    eliminarArtwork
   }
 
 

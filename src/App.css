@@ -7,7 +7,7 @@
 a {
   margin: 15px;
 }
-
+/* 
 html, body {
   height: 100%;
   margin:0;
@@ -60,4 +60,8 @@ body {
   max-width: 500px;
   height: auto;
   margin-bottom: 30px;
-}
+} */
+
+/* .myprofile{
+  background-image: url('../public/fondoclaro1.jpg');
+} */
