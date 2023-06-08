@@ -25,6 +25,7 @@ function AuthWrapper(props) {
       setIsLoggedIn(true)
       setUser(response.data.payload)
       setIsLoading(false)
+   
 
     } catch (error) {
       console.log("token invalido o no hay token")

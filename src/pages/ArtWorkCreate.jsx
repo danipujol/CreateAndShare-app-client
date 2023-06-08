@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import uploadArtwork from "../services/uploader.services.js";
 import { createArtwork } from "../services/artworks.services.js";
 
+
 function ArtWorkCreate() {
   //1.useState para cada propiedad
 
@@ -44,6 +45,7 @@ function ArtWorkCreate() {
           typeOfArt,
           yearOfCreation,
         };
+        console.log(artwork)
 
     try {
       //aqui la funcion para enviar los datos al backend
@@ -59,82 +61,84 @@ function ArtWorkCreate() {
   };
 
   return (
-    <div>
-      {!imageUploaded ? (
-        <img src={image} alt="Artwork" />
-      ) : (
-        <div>...Loading</div>
-      )}
+    
+    <div className="container d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
+      <div className="card p-4">
+        {!imageUploaded ? (
+          <img src={image} alt="No olvides la imagen" />
+        ) : (
+          <div>Imagen subida correctamente</div>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          class="form-control"
-          type="text"
-          placeholder="Título"
-          aria-label="default input example"
-        />
-
-        <div class="mb-3">
-          <label for="formFile" class="form-label">
-            Imagen
-          </label>
+        <form onSubmit={handleSubmit} className="mt-3" method="post">
           <input
-            onChange={(e) => handleUpload(e)}
-            class="form-control"
-            type="file"
-            name="image"
-            accept="image/*"
-            id="formFile"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            className="form-control mb-3"
+            type="text"
+            placeholder="Título"
+            aria-label="Título"
           />
-        </div>
 
-        <input
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          class="form-control"
-          type="text"
-          placeholder="Descripción"
-          aria-label="default input example"
-        />
+          <div className="mb-3">
+            <label htmlFor="formFile" className="form-label">
+              Imagen
+            </label>
+            <input
+              onChange={(e) => handleUpload(e)}
+              className="form-control"
+              type="file"
+              name="image"
+              accept="image/*"
+              id="formFile"
+            />
+          </div>
 
-        <input
-          onChange={(e) => setYearOfCreation(e.target.value)}
-          value={yearOfCreation}
-          class="form-control"
-          type="number"
-          min="1800"
-          max="2099"
-          step="1"
-          placeholder="Año de creación"
-          aria-label="default input example"
-        />
+          <input
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            className="form-control mb-3"
+            type="text"
+            placeholder="Descripción"
+            aria-label="Descripción"
+          />
 
-        <select
-          onChange={(e) => setTypeOfArt(e.target.value)}
-          value={typeOfArt}
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option selected>Selecciona categoría</option>
-          <option value="pintura">Pintura</option>
-          <option value="grafitis">Grafiti</option>
-          <option value="murales">Mural</option>
-          <option value="escultura">Escultura</option>
-          <option value="dibujo">Dibujo</option>
-          <option value="grabado">Grabado</option>
-          <option value="arteDelVidrio">Arte del vidrio</option>
-          <option value="orfebrería">Orfebrería</option>
-          <option value="ebanistería">Ebanistería</option>
-          <option value="cerámica">Cerámica</option>
-          <option value="fotografía">Fotografía</option>
-          <option value="otros">Otros</option>
-        </select>
-        <br />
+          <input
+            onChange={(e) => setYearOfCreation(e.target.value)}
+            value={yearOfCreation}
+            className="form-control mb-3"
+            type="number"
+            min="1800"
+            max="2099"
+            step="1"
+            placeholder="Año de creación"
+            aria-label="Año de creación"
+          />
 
-        <button type="submit">Crear</button>
-      </form>
+          <select
+            onChange={(e) => setTypeOfArt(e.target.value)}
+            value={typeOfArt}
+            className="form-select mb-3"
+            aria-label="Selecciona categoría"
+          >
+            <option value="">Selecciona categoría</option>
+            <option value="pintura">Pintura</option>
+            <option value="grafitis">Grafiti</option>
+            <option value="murales">Mural</option>
+            <option value="escultura">Escultura</option>
+            <option value="dibujo">Dibujo</option>
+            <option value="grabado">Grabado</option>
+            <option value="arteDelVidrio">Arte del vidrio</option>
+            <option value="orfebrería">Orfebrería</option>
+            <option value="ebanistería">Ebanistería</option>
+            <option value="cerámica">Cerámica</option>
+            <option value="fotografía">Fotografía</option>
+            <option value="otros">Otros</option>
+          </select>
+
+          <button type="submit" className="btn btn-primary">Crear</button>
+        </form>
+      </div>
     </div>
   );
 }

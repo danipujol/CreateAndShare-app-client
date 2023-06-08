@@ -2,12 +2,12 @@ function Home() {
   return (
     
    
-    <div className="container-fluid bg-image" style={{ backgroundImage: "url('fondoclaro1.jpg')", height: "100vh", backgroundSize: "cover", backgroundPosition: "center"}}
+    <div className="container-fluid bg-image" style={{ backgroundImage: "url('fondoclaro1.jpg')", minheight: "100vh", backgroundSize: "cover", backgroundPosition: "center"}}
     >
       <h2 className="text-center display-6" style={{fontWeight: "bold", fontFamily: "Georgia, serif"}}>¡Bienvenido a nuestra plataforma artística en línea!</h2>
 
      
-     <img src="logo aqui" alt="C&S" className="logo mx-auto d-block mt-4" style={{ margin: '0 auto' }} width={400} />
+     <img src="bombilla.png" alt="C&S" className="logo mx-auto d-block"  width={500} />
     
     
 

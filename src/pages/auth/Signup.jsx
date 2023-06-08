@@ -51,8 +51,12 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h1>Registrarse</h1>
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
+      <div>
+     
+        <h1>Registrarse</h1>
+      
+      
 
       <form onSubmit={handleSignup}>
         <label>Nombre artístico:</label>
@@ -122,9 +126,11 @@ function Signup() {
         <br />
 
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+<br />
 
-        <button type="submit">Signup</button>
+        <button type="submit">Crear cuenta</button>
       </form>
+      </div>
     </div>
   );
 }

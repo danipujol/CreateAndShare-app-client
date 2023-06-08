@@ -24,6 +24,9 @@ function Navbar() {
       <div class="container-fluid">
         <div class="collapse navbar-collapse justify-content-center" activeClassName="active" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center" >
+          <li>
+            <img src="bombilla1.png" alt="" width={50} style={{ marginLeft: '2px' }} />
+          </li>
             <li class="nav-item">
               <Link class="nav-link text-dark" to="/">
                 Quiénes somos

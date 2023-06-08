@@ -83,13 +83,16 @@ function ArtWorkEdit() {
   };
 
   return (
+    <div className="container d-flex justify-content-center align-items-center">
+<div>
     <div>
       {!imageUploaded ? (
         <img src={image} alt="Artwork" />
       ) : (
         <div>...Loading</div>
       )}
-
+</div>
+<div>
       <form onSubmit={handleSubmit}>
         <input
           onChange={(e) => setTitle(e.target.value)}
@@ -158,7 +161,10 @@ function ArtWorkEdit() {
         <br />
 
         <button type="submit">Guardar cambios</button>
+        
       </form>
+      </div>
+      </div>
     </div>
   );
 }

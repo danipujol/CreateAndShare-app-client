@@ -47,10 +47,10 @@ function Login() {
   };
 
   return (
+    <div className="d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
     <div>
-
       <h1>Bienvenido de nuevo</h1>
-
+  
       <form onSubmit={handleLogin}>
         <label>Nombre artístico:</label>
         <input
@@ -59,9 +59,9 @@ function Login() {
           value={username}
           onChange={handleUsernameChange}
         />
-
+  
         <br />
-
+  
         <label>Contraseña:</label>
         <input
           type="password"
@@ -69,15 +69,15 @@ function Login() {
           value={password}
           onChange={handlePasswordChange}
         />
-
+  
         <br />
-
-        {errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
-
+  
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+  
         <button type="submit">Entrar</button>
       </form>
-      
     </div>
+  </div>
   );
 }
 

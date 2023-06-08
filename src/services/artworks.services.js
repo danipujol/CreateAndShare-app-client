@@ -12,8 +12,8 @@ service.interceptors.request.use((config) => {
     return config
   })
 
-  const getAllArtworks = () => {
-    return service.get("/")
+  const getAllArtworks = (searchText) => { //pasar parametre
+    return service.get("/", searchText)
   }
 
 const getOneArtwork = (id) => {
