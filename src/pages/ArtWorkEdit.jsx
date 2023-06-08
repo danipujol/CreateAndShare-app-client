@@ -83,11 +83,20 @@ function ArtWorkEdit() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center">
+    <div className="container-fluid d-flex justify-content-center align-items-center" 
+    style={{ backgroundImage: "url('/fondo3.jpg')",
+    backgroundRepeat: "repeat-y",
+    backgroundSize: "cover",
+    minHeight: "100vh",
+    color: "black",
+    fontWeight: "bold",
+    fontFamily: "Georgia, serif",
+    paddingTop: "100px"}}>
+    
 <div>
     <div>
       {!imageUploaded ? (
-        <img src={image} alt="Artwork" />
+        <img src={image} alt="Artwork" style={{ width: "450px", height: "600px" }} />
       ) : (
         <div>...Loading</div>
       )}
@@ -161,6 +170,10 @@ function ArtWorkEdit() {
         <br />
 
         <button type="submit">Guardar cambios</button>
+        <br />
+        <br />
+        <br />
+        <br />
         
       </form>
       </div>

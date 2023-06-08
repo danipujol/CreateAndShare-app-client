@@ -62,7 +62,16 @@ function ArtWorkCreate() {
 
   return (
     
-    <div className="container d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
+    <div className="container-fluid d-flex justify-content-center align-items-center" 
+    style={{ backgroundImage: "url('/fondo3.jpg')",
+    backgroundRepeat: "repeat-y",
+    backgroundSize: "cover",
+    minHeight: "100vh",
+    color: "white",
+    height: "550px",
+    fontWeight: "bold",
+    fontFamily: "Georgia, serif"}}>
+
       <div className="card p-4">
         {!imageUploaded ? (
           <img src={image} alt="No olvides la imagen" />

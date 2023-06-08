@@ -5,6 +5,7 @@ import ArtWorkEditContainer from "../components/ArtWorkEditContainer";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 
+
 function MyProfile() {
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function MyProfile() {
 
   useEffect(() => {
     getArtist();
+    
   }, []);
 
   const getArtist = async () => {
@@ -21,49 +23,73 @@ function MyProfile() {
 
       setProfile(response.data);
       //   console.log(isLoggedIn, authenticateUser);
+      console.log("hola",profile)
     } catch (error) {
       navigate("/error");
     }
   };
 
+
+  
   if (!profile) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div  className="text-center">
-      <div>
-        <h1>
+    <div
+      className="row"
+      style={{
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        color: "black",
+      }}
+    >
+      <div
+        className="text-center"
+        style={{
+          fontWeight: "bold",
+          fontFamily: "Georgia, serif",
+          paddingTop: "100px",
+          paddingBlockEnd: "50px",
+        }}
+      >
+        <h1 className="display-6" style={{ fontFamily: "Georgia, serif" }}>
           {profile.response.name} {profile.response.firstName}
         </h1>
-        <h3>Nombre artístico: {profile.response.username}</h3>
-        <h4>¡QUIZÁS AÑADIR UN: SOBRE MI (DESCRIPCIÓN)!</h4>
-        <h5>Ciudad actual: {profile.response.actualCity}</h5>
+        <h3>
+          Nombre artístico:
+          <br />
+          {profile.response.username}
+        </h3>
+       
         <h5>
-          Fecha de nacimiento: {profile.response.dateOfBirth}(
-          {/* <p>  const dateOfBirth = user.dateOfBirth.toLocaleDateString("en-US", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        });</p> */}
-          )
+          Ciudad actual:
+          <br />
+          {profile.response.actualCity}
         </h5>
-        <h6>Contacto: {profile.response.email}</h6>
+        <h5>
+          Fecha de nacimiento:
+          <br />
+          {profile.response.dateOfBirth.slice(0,10)}
+        </h5>
+        <h6>
+          Contacto:
+          <br />
+          {profile.response.email}
+        </h6>
+        <br />
         <h1>Obras compartidas</h1>
       </div>
-
-      <div className="d-flex flex-wrap justify-content-center">
-        {profile.artWorks.map((eachArtWork) => {
-          return (
-            <div className="col-3 mb-3 mx-3">
-              <ArtWorkEditContainer
+      
+      {profile.artWorks.map((eachArtWork) => {
+          return <ArtWorkEditContainer
                 key={eachArtWork._id}
                 artwork={eachArtWork}
-              />
-            </div>
-          );
+                
+                />  
         })}
-      </div>
     </div>
   );
 }

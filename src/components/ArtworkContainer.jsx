@@ -6,10 +6,10 @@ function ArtworkContainer(props) {
   return (
     //poner mismos tamaños
     <div className="col-md-4 mb-4 ">
-    <div className="card mx-auto" style={{ width: "15rem" }}>
+    <div className="card mx-auto" style={{ width: "15rem", height: "25rem", borderRadius: "2px"  }}>
       <div className="card-body d-flex flex-column align-items-center">
         <h5 className="card-title text-center mb-3">{artwork.title}</h5>
-        <img src={artwork.image} className="card-img-top" alt="..." />
+        <img src={artwork.image} className="card-img-top" alt="..." style={{ width: "150px", height: "200px" }} />
         <Link to={`/obra/${artwork._id}/detalles`} className="btn btn-primary mt-3">
           Detalles de la obra
         </Link>

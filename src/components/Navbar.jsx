@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 
 
 function Navbar() {
-  const { isLoggedIn, authenticateUser } = useContext(AuthContext);
+  const { isLoggedIn, authenticateUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,12 +20,12 @@ function Navbar() {
   return (
 
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary underline-navbar border-bottom">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary underline-navbar   fixed-top" style={{borderBottom: "1px solid black"}}>
       <div class="container-fluid">
         <div class="collapse navbar-collapse justify-content-center" activeClassName="active" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center" >
           <li>
-            <img src="bombilla1.png" alt="" width={50} style={{ marginLeft: '2px' }} />
+            <img src="logo9.png" alt="" width={200} style={{ marginLeft: '1px',  }}  />
           </li>
             <li class="nav-item">
               <Link class="nav-link text-dark" to="/">

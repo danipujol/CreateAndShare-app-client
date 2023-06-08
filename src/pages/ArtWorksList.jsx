@@ -1,64 +1,92 @@
 import ArtworkContainer from "../components/ArtworkContainer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllArtworks } from "../services/artworks.services";
+import { AuthContext } from "../context/auth.context";
 
+
+
+  
 function ArtWorksList() {
-  const [artworks, setArtworks] = useState(null);
-
-  const [searchInput, setSearchInput] = useState("")
+  const [artworks, setArtworks] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredArtworks, setFilteredArtworks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getArtworks(searchInput);
+    getArtworks();
   }, []);
+
+  useEffect(() => {
+    filterArtworks();
+  }, [searchText, artworks]);
 
   const getArtworks = async () => {
     try {
-      const response = await getAllArtworks(searchInput); //pasar el parametre
-      setArtworks(response.data);
-      //  console.log(response.data)
+      let response;
+      if (searchText) {
+        response = await getAllArtworks(searchText);
+        setFilteredArtworks(response.data); // filtramos los artworks
+      } else {
+        response = await getAllArtworks();
+        setArtworks(response.data);
+        setFilteredArtworks(response.data); // mostramos todos los artworks
+      }
     } catch (error) {
       navigate("/error");
     }
   };
 
-  
+  const filterArtworks = () => {
+    if (!searchText) {
+      setFilteredArtworks(artworks); // mostramos todos los artworks
+    } else {
+      const filtered = artworks.filter((artwork) =>
+        artwork.typeOfArt.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredArtworks(filtered); // filtramos los artworks según el texto de búsqueda
+    }
+  };
 
-// const handleSearchChange = (event) => {
-//   //1.guardar el valor en el estado
-//   setSearchInput(event.target.value)
-
-//   //2.tendremos que filtrar el array de todos los productos
-
-
-
-
-// }
-
-  if (!artworks) {
-    return <div>Loading...</div>;
-  }
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
 
   return (
     <div
-    
       className="row"
       style={{
-        backgroundImage: "url('fondoclaro1.jpg')",
-        height: "100vh",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
+      backgroundImage: "url('/fondo3.jpg')",
+      backgroundRepeat: "repeat-y",
+      backgroundSize: "cover",
+      minHeight: "100vh",
+      color: "black",
+      fontWeight: "bold", fontFamily: "Georgia, serif", paddingTop: "100px", paddingBlockEnd: "50px"
       }}
     >
-    
-    <div>
-<h2> Busquedas</h2>
+      <div
+        className="text-center"
+        style={{
+          fontWeight: "bold",
+          fontFamily: "Georgia, serif",
+          paddingTop: "100px",
+          paddingBlockEnd: "50px",
+        }}
+      >
+        <h2
+          className="display-6"
+          style={{ fontWeight: "bold", fontFamily: "Georgia, serif" }}
+        >
+          {" "}
+          Búsqueda
+        </h2>
 
-<form onSubmit={getArtworks}>
-  <select onChange={(e) => setSearchInput(e.target.value)} value={searchInput} class="form-select" aria-label="Default select example" >
-  <option selected>Open this select menu</option>
+        <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center">
+          <div className="form-group mx-sm-3">
+            
+            
+                <select onChange={handleSearchChange} value={searchText} class="form-select" aria-label="Default select example" >
+  
   <option value="">Selecciona categoría</option>
             <option value="pintura">Pintura</option>
             <option value="grafitis">Grafiti</option>
@@ -72,19 +100,21 @@ function ArtWorksList() {
             <option value="cerámica">Cerámica</option>
             <option value="fotografía">Fotografía</option>
             <option value="otros">Otros</option>
-</select>
- <button type="submit" className="btn btn-primary">Buscar</button>
-</form>
+</select> 
 
+            
+          </div>
+        
+        </form>
+      </div>
 
-
-
-    </div>
-
-
-      {artworks.map((eachArtwork) => {
-        return <ArtworkContainer key={eachArtwork._id} artwork={eachArtwork} />;
-      })}
+      {filteredArtworks.length === 0 ? (
+        <p>No se encontraron resultados.</p>
+      ) : (
+        filteredArtworks.map((eachArtwork) => (
+          <ArtworkContainer key={eachArtwork._id} artwork={eachArtwork} />
+        ))
+      )}
     </div>
   );
 }

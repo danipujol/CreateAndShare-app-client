@@ -51,7 +51,14 @@ function Signup() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
+    <div className="container-fluid d-flex justify-content-center align-items-center" 
+    style={{ backgroundImage: "url('/fondo3.jpg')",
+    backgroundRepeat: "repeat-y",
+
+    backgroundSize: "cover",
+    minHeight: "100vh",
+    color: "black",
+    height: "550px",fontWeight: "bold", fontFamily: "Georgia, serif"}}>
       <div>
      
         <h1>Registrarse</h1>

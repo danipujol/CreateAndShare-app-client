@@ -35,7 +35,7 @@ function Login() {
       // 2. Validamos el token para saber quien es el usuario y saber si está logeado
       await authenticateUser()
 
-      navigate("/")
+      navigate("/obras")
 
     } catch (error) {
       if (error.response.status === 400) {
@@ -47,7 +47,16 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ height: "550px"}}>
+    <div className="container-fluid d-flex justify-content-center align-items-center" 
+    style={{ backgroundImage: "url('/fondo3.jpg')",
+    backgroundRepeat: "repeat-y",
+    backgroundSize: "cover",
+    minHeight: "100vh",
+    color: "black",
+    height: "550px",
+    fontWeight: "bold",
+     fontFamily: "Georgia, serif"}}
+    >
     <div>
       <h1>Bienvenido de nuevo</h1>
   

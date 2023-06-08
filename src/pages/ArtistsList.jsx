@@ -27,12 +27,18 @@ function ArtistsList() {
     <div
     className="row"
     style={{
-      backgroundImage: "url('fondoclaro1.jpg')",
-      height: "100vh",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundAttachment: "fixed",
-    }}>
+        backgroundImage: "url('fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        paddingTop: "100px",
+        
+        color: "white"
+      }}>
+
+
+  
+
       {artists.map((eachArtist) => {
         return <ArtistContainer key={eachArtist._id} artist={eachArtist} />;
       })}

@@ -29,22 +29,26 @@ function ArtistProfile() {
   }
 
   return (
-    <div className="text-center" style={{ backgroundImage: "url('fondoclaro1.jpg')", height: "100vh", backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" }}>
+    <div className="text-center"   style={{
+      backgroundImage: "url('/fondo3.jpg')",
+      backgroundRepeat: "repeat-y",
+      backgroundSize: "cover",
+      minHeight: "100vh",
+      paddingTop: "100px",
+      color: "black"
+    }}>
     <h1>
       {profile.response.name} {profile.response.firstName}
     </h1>
     <h3>Nombre artístico: {profile.response.username}</h3>
-    <h4>¡QUIZÁS AÑADIR UN: SOBRE MI (DESCRIPCIÓN)!</h4>
+   
     <h5>Ciudad actual: {profile.response.actualCity}</h5>
     <h5>
-      Fecha de nacimiento: {profile.response.dateOfBirth}
-      {/* <p>  const dateOfBirth = user.dateOfBirth.toLocaleDateString("en-US", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });</p> */}
+      Fecha de nacimiento: {profile.response.dateOfBirth.slice(0,10)}
+   
     </h5>
     <h6>Contacto: {profile.response.email}</h6>
+    <br />
   
     <div style={{ display: "flex", flexWrap: "wrap" }}>
 
