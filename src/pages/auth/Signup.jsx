@@ -51,92 +51,94 @@ function Signup() {
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center" 
-    style={{ backgroundImage: "url('/fondo3.jpg')",
-    backgroundRepeat: "repeat-y",
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
 
-    backgroundSize: "cover",
-    minHeight: "100vh",
-    color: "black",
-    height: "550px",fontWeight: "bold", fontFamily: "Georgia, serif"}}>
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        color: "black",
+        height: "550px",
+        fontWeight: "bold",
+        fontFamily: "Georgia, serif",
+      }}
+    >
       <div>
-     
         <h1>Registrarse</h1>
-      
-      
 
-      <form onSubmit={handleSignup}>
-        <label>Nombre artístico:</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-        <br />
-        <label>Nombre:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <br />
+        <form onSubmit={handleSignup}>
+          <label>Nombre artístico:</label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+          <br />
+          <label>Nombre:</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+          />
+          <br />
 
-        <label>Apellido:</label>
-        <input
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={handleFirstNameChange}
-        />
-        <br />
+          <label>Apellido:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={firstName}
+            onChange={handleFirstNameChange}
+          />
+          <br />
 
-        <label>Ciudad en la que reside:</label>
-        <input
-          type="text"
-          name="actualCity"
-          value={actualCity}
-          onChange={handleActualCityChange}
-        />
-        <br />
+          <label>Ciudad en la que reside:</label>
+          <input
+            type="text"
+            name="actualCity"
+            value={actualCity}
+            onChange={handleActualCityChange}
+          />
+          <br />
 
-        <label>Fecha de nacimiento:</label>
-        <input
-          type="date"
-          name="dateOfBirth"
-          value={dateOfBirth}
-          onChange={handleDateOfBirthChange}
-        />
-        
+          <label>Fecha de nacimiento:</label>
+          <input
+            type="date"
+            name="dateOfBirth"
+            value={dateOfBirth}
+            onChange={handleDateOfBirthChange}
+          />
 
-        <br />
+          <br />
 
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
 
-        <br />
+          <br />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
 
-        <br />
+          <br />
 
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-<br />
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          <br />
 
-        <button type="submit">Crear cuenta</button>
-      </form>
+          <button type="submit">Crear cuenta</button>
+        </form>
       </div>
     </div>
   );

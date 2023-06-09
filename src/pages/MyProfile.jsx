@@ -5,7 +5,6 @@ import ArtWorkEditContainer from "../components/ArtWorkEditContainer";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 
-
 function MyProfile() {
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ function MyProfile() {
 
   useEffect(() => {
     getArtist();
-    
   }, []);
 
   const getArtist = async () => {
@@ -23,14 +21,12 @@ function MyProfile() {
 
       setProfile(response.data);
       //   console.log(isLoggedIn, authenticateUser);
-      console.log("hola",profile)
+      console.log("hola", profile);
     } catch (error) {
       navigate("/error");
     }
   };
 
-
-  
   if (!profile) {
     return <div>Loading...</div>;
   }
@@ -63,7 +59,7 @@ function MyProfile() {
           <br />
           {profile.response.username}
         </h3>
-       
+
         <h5>
           Ciudad actual:
           <br />
@@ -72,7 +68,7 @@ function MyProfile() {
         <h5>
           Fecha de nacimiento:
           <br />
-          {profile.response.dateOfBirth.slice(0,10)}
+          {profile.response.dateOfBirth.slice(0, 10)}
         </h5>
         <h6>
           Contacto:
@@ -82,14 +78,12 @@ function MyProfile() {
         <br />
         <h1>Obras compartidas</h1>
       </div>
-      
+
       {profile.artWorks.map((eachArtWork) => {
-          return <ArtWorkEditContainer
-                key={eachArtWork._id}
-                artwork={eachArtWork}
-                
-                />  
-        })}
+        return (
+          <ArtWorkEditContainer key={eachArtWork._id} artwork={eachArtWork} />
+        );
+      })}
     </div>
   );
 }

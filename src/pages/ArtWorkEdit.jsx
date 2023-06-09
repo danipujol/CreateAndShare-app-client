@@ -26,13 +26,12 @@ function ArtWorkEdit() {
   const getArtworks = async () => {
     try {
       const response = await getOneArtwork(id);
-      setArtwork(response.data)
+      setArtwork(response.data);
       setTitle(response.data.title);
       setDescription(response.data.description);
       setImage(response.data.image);
       setTypeOfArt(response.data.typeOfArt);
       setYearOfCreation(response.data.yearOfCreation);
-      
     } catch (error) {
       navigate("/error");
     }
@@ -83,100 +82,106 @@ function ArtWorkEdit() {
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center" 
-    style={{ backgroundImage: "url('/fondo3.jpg')",
-    backgroundRepeat: "repeat-y",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-    color: "black",
-    fontWeight: "bold",
-    fontFamily: "Georgia, serif",
-    paddingTop: "100px"}}>
-    
-<div>
-    <div>
-      {!imageUploaded ? (
-        <img src={image} alt="Artwork" style={{ width: "450px", height: "600px" }} />
-      ) : (
-        <div>...Loading</div>
-      )}
-</div>
-<div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          class="form-control"
-          type="text"
-          placeholder="Título"
-          aria-label="default input example"
-        />
-
-        <div class="mb-3">
-          <label for="formFile" class="form-label">
-            Imagen
-          </label>
-          <input
-            onChange={(e) => handleUpload(e)}
-            class="form-control"
-            type="file"
-            name="image"
-            accept="image/*"
-            id="formFile"
-          />
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        color: "black",
+        fontWeight: "bold",
+        fontFamily: "Georgia, serif",
+        paddingTop: "100px",
+      }}
+    >
+      <div>
+        <div>
+          {!imageUploaded ? (
+            <img
+              src={image}
+              alt="Artwork"
+              style={{ width: "450px", height: "600px" }}
+            />
+          ) : (
+            <div>...Loading</div>
+          )}
         </div>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              class="form-control"
+              type="text"
+              placeholder="Título"
+              aria-label="default input example"
+            />
 
-        <input
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          class="form-control"
-          type="text"
-          placeholder="Descripción"
-          aria-label="default input example"
-        />
+            <div class="mb-3">
+              <label for="formFile" class="form-label">
+                Imagen
+              </label>
+              <input
+                onChange={(e) => handleUpload(e)}
+                class="form-control"
+                type="file"
+                name="image"
+                accept="image/*"
+                id="formFile"
+              />
+            </div>
 
-        <input
-          onChange={(e) => setYearOfCreation(e.target.value)}
-          value={yearOfCreation}
-          class="form-control"
-          type="number"
-          min="1800"
-          max="2099"
-          step="1"
-          placeholder="Año de creación"
-          aria-label="default input example"
-        />
+            <input
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+              class="form-control"
+              type="text"
+              placeholder="Descripción"
+              aria-label="default input example"
+            />
 
-        <select
-          onChange={(e) => setTypeOfArt(e.target.value)}
-          value={typeOfArt}
-          class="form-select"
-          aria-label="Default select example"
-        >
-          <option selected>Selecciona categoría</option>
-          <option value="pintura">Pintura</option>
-          <option value="grafitis">Grafiti</option>
-          <option value="murales">Mural</option>
-          <option value="escultura">Escultura</option>
-          <option value="dibujo">Dibujo</option>
-          <option value="grabado">Grabado</option>
-          <option value="arteDelVidrio">Arte del vidrio</option>
-          <option value="orfebrería">Orfebrería</option>
-          <option value="ebanistería">Ebanistería</option>
-          <option value="cerámica">Cerámica</option>
-          <option value="fotografía">Fotografía</option>
-          <option value="otros">Otros</option>
-        </select>
-        <br />
+            <input
+              onChange={(e) => setYearOfCreation(e.target.value)}
+              value={yearOfCreation}
+              class="form-control"
+              type="number"
+              min="1800"
+              max="2099"
+              step="1"
+              placeholder="Año de creación"
+              aria-label="default input example"
+            />
 
-        <button type="submit">Guardar cambios</button>
-        <br />
-        <br />
-        <br />
-        <br />
-        
-      </form>
-      </div>
+            <select
+              onChange={(e) => setTypeOfArt(e.target.value)}
+              value={typeOfArt}
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option selected>Selecciona categoría</option>
+              <option value="pintura">Pintura</option>
+              <option value="grafitis">Grafiti</option>
+              <option value="murales">Mural</option>
+              <option value="escultura">Escultura</option>
+              <option value="dibujo">Dibujo</option>
+              <option value="grabado">Grabado</option>
+              <option value="arteDelVidrio">Arte del vidrio</option>
+              <option value="orfebrería">Orfebrería</option>
+              <option value="ebanistería">Ebanistería</option>
+              <option value="cerámica">Cerámica</option>
+              <option value="fotografía">Fotografía</option>
+              <option value="otros">Otros</option>
+            </select>
+            <br />
+
+            <button type="submit">Guardar cambios</button>
+            <br />
+            <br />
+            <br />
+            <br />
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -29,38 +29,35 @@ function ArtistProfile() {
   }
 
   return (
-    <div className="text-center"   style={{
-      backgroundImage: "url('/fondo3.jpg')",
-      backgroundRepeat: "repeat-y",
-      backgroundSize: "cover",
-      minHeight: "100vh",
-      paddingTop: "100px",
-      color: "black"
-    }}>
-    <h1>
-      {profile.response.name} {profile.response.firstName}
-    </h1>
-    <h3>Nombre artístico: {profile.response.username}</h3>
-   
-    <h5>Ciudad actual: {profile.response.actualCity}</h5>
-    <h5>
-      Fecha de nacimiento: {profile.response.dateOfBirth.slice(0,10)}
-   
-    </h5>
-    <h6>Contacto: {profile.response.email}</h6>
-    <br />
-  
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div
+      className="text-center"
+      style={{
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        paddingTop: "100px",
+        color: "black",
+      }}
+    >
+      <h1>
+        {profile.response.name} {profile.response.firstName}
+      </h1>
+      <h3>Nombre artístico: {profile.response.username}</h3>
 
-   
-      
-      {profile.artWorks.map((eachArtWork) => {
-        return (
-          <ArtworkContainer key={eachArtWork._id} artwork={eachArtWork} />
-        );
-      })}
+      <h5>Ciudad actual: {profile.response.actualCity}</h5>
+      <h5>Fecha de nacimiento: {profile.response.dateOfBirth.slice(0, 10)}</h5>
+      <h6>Contacto: {profile.response.email}</h6>
+      <br />
+
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {profile.artWorks.map((eachArtWork) => {
+          return (
+            <ArtworkContainer key={eachArtWork._id} artwork={eachArtWork} />
+          );
+        })}
+      </div>
     </div>
-  </div>
   );
 }
 

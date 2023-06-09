@@ -12,24 +12,31 @@ function Home() {
     >
       <h2
         className="text-center display-6"
-        style={{ fontWeight: "bold", fontFamily: "Georgia, serif", paddingTop: "100px" }}
+        style={{
+          fontWeight: "bold",
+          fontFamily: "Georgia, serif",
+          paddingTop: "100px",
+        }}
       >
         ¡Bienvenido a nuestra plataforma artística en línea!
       </h2>
 
-      {/* <img src="bombilla.png" alt="C&S" className="logo mx-auto d-block"  width={500} /> */}
-
-      <div className="parraf mt-4" style={{   backgroundColor: "#E8E7E7",
-    paddingTop: "20px",
-    PaddingEnd: "20px",
-    paddingRight:"20px",
-    paddingLeft: "20px",
-    border: "1px solid black",
-    borderRadius: "2px",
-    marginLeft:"250px",
-    marginRight:"250px",
-    color: "black" }}>
-        <p 
+      <div
+        className="parraf mt-4"
+        style={{
+          backgroundColor: "#E8E7E7",
+          paddingTop: "20px",
+          PaddingEnd: "20px",
+          paddingRight: "20px",
+          paddingLeft: "20px",
+          border: "1px solid black",
+          borderRadius: "2px",
+          marginLeft: "250px",
+          marginRight: "250px",
+          color: "black",
+        }}
+      >
+        <p
           className="text-center mx-auto"
           style={{
             maxWidth: "600px",

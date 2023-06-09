@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { getAllArtworks } from "../services/artworks.services";
 import { AuthContext } from "../context/auth.context";
 
-
-
-  
 function ArtWorksList() {
   const [artworks, setArtworks] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -56,12 +53,15 @@ function ArtWorksList() {
     <div
       className="row"
       style={{
-      backgroundImage: "url('/fondo3.jpg')",
-      backgroundRepeat: "repeat-y",
-      backgroundSize: "cover",
-      minHeight: "100vh",
-      color: "black",
-      fontWeight: "bold", fontFamily: "Georgia, serif", paddingTop: "100px", paddingBlockEnd: "50px"
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        color: "black",
+        fontWeight: "bold",
+        fontFamily: "Georgia, serif",
+        paddingTop: "100px",
+        paddingBlockEnd: "50px",
       }}
     >
       <div
@@ -81,30 +81,32 @@ function ArtWorksList() {
           Búsqueda
         </h2>
 
-        <form onSubmit={(e) => e.preventDefault()} className="d-flex justify-content-center">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="d-flex justify-content-center"
+        >
           <div className="form-group mx-sm-3">
-            
-            
-                <select onChange={handleSearchChange} value={searchText} class="form-select" aria-label="Default select example" >
-  
-  <option value="">Selecciona categoría</option>
-            <option value="pintura">Pintura</option>
-            <option value="grafitis">Grafiti</option>
-            <option value="murales">Mural</option>
-            <option value="escultura">Escultura</option>
-            <option value="dibujo">Dibujo</option>
-            <option value="grabado">Grabado</option>
-            <option value="arteDelVidrio">Arte del vidrio</option>
-            <option value="orfebrería">Orfebrería</option>
-            <option value="ebanistería">Ebanistería</option>
-            <option value="cerámica">Cerámica</option>
-            <option value="fotografía">Fotografía</option>
-            <option value="otros">Otros</option>
-</select> 
-
-            
+            <select
+              onChange={handleSearchChange}
+              value={searchText}
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value="">Selecciona categoría</option>
+              <option value="pintura">Pintura</option>
+              <option value="grafitis">Grafiti</option>
+              <option value="murales">Mural</option>
+              <option value="escultura">Escultura</option>
+              <option value="dibujo">Dibujo</option>
+              <option value="grabado">Grabado</option>
+              <option value="arteDelVidrio">Arte del vidrio</option>
+              <option value="orfebrería">Orfebrería</option>
+              <option value="ebanistería">Ebanistería</option>
+              <option value="cerámica">Cerámica</option>
+              <option value="fotografía">Fotografía</option>
+              <option value="otros">Otros</option>
+            </select>
           </div>
-        
         </form>
       </div>
 

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import uploadArtwork from "../services/uploader.services.js";
 import { createArtwork } from "../services/artworks.services.js";
 
-
 function ArtWorkCreate() {
   //1.useState para cada propiedad
 
@@ -39,20 +38,19 @@ function ArtWorkCreate() {
     e.preventDefault();
 
     const artwork = {
-          title,
-          description,
-          image,
-          typeOfArt,
-          yearOfCreation,
-        };
-        console.log(artwork)
+      title,
+      description,
+      image,
+      typeOfArt,
+      yearOfCreation,
+    };
+    console.log(artwork);
 
     try {
       //aqui la funcion para enviar los datos al backend
-      await createArtwork(artwork)
-       //poner un navigate
-       navigate("/artistas/mi-perfil")
-
+      await createArtwork(artwork);
+      //poner un navigate
+      navigate("/artistas/mi-perfil");
     } catch (error) {
       navigate("/error");
     }
@@ -61,17 +59,19 @@ function ArtWorkCreate() {
   };
 
   return (
-    
-    <div className="container-fluid d-flex justify-content-center align-items-center" 
-    style={{ backgroundImage: "url('/fondo3.jpg')",
-    backgroundRepeat: "repeat-y",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-    color: "white",
-    height: "550px",
-    fontWeight: "bold",
-    fontFamily: "Georgia, serif"}}>
-
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center"
+      style={{
+        backgroundImage: "url('/fondo3.jpg')",
+        backgroundRepeat: "repeat-y",
+        backgroundSize: "cover",
+        minHeight: "100vh",
+        color: "white",
+        height: "550px",
+        fontWeight: "bold",
+        fontFamily: "Georgia, serif",
+      }}
+    >
       <div className="card p-4">
         {!imageUploaded ? (
           <img src={image} alt="No olvides la imagen" />
@@ -145,7 +145,9 @@ function ArtWorkCreate() {
             <option value="otros">Otros</option>
           </select>
 
-          <button type="submit" className="btn btn-primary">Crear</button>
+          <button type="submit" className="btn btn-primary">
+            Crear
+          </button>
         </form>
       </div>
     </div>
